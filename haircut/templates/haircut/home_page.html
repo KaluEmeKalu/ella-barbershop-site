@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Ella's Haircut</title>
+</head>
+<body>
+    <!--Site Header-->
+    <h1>Hello~ Here is Ella's haircut store.</h1>
+    <p>Your convenience is our duty</p>
+    <!--Blog Post-->
+    <h2>You could set the time and your barber use this website.</h2>
+    <!-- Item 1 -->
+    <p>Bright Brown</p>
+    <image src = "http://www.cuded.com/wp-content/uploads/2016/05/blonde-hair-color-ideas-29.jpg">
+    <!-- Item 2 -->
+    <p>Silver</p>
+    <image src = "https://tse4.mm.bing.net/th?id=OIP.WCAA6-JPGCts8CE_ac44uQHaJQ&pid=Api">
+    <!-- Item 3 --> 
+
+
+    <!-- User Form -->
+    <h1>Comments</h1>
+    <form action="{% url 'haircut:home_page' %} " method="POST">
+        {%csrf_token%}
+        <input type="text" name="time" placeholder="Type Your Time"><br>
+        <input type="text" name="barber_name" placeholder="Type Your Barber Name"><br>
+        <input type="text" name="customer_name" placeholder="Type Your Name"><br>
+        <input type="submit">
+
+    </form>
+    
+
+    <!--Display Previous Comments-->
+        <h2>Appointment</h2>
+        {% for appointment in appointments %}
+        <p>Time: {{appointment.time}}</p>
+
+        <p>Barber name: {{appointment.barber_name}}</p>
+        <p>Customer name: {{appointment.customer_name}}</p> <hr>
+        
+        {% endfor %}
+
+
+
+</body>
+</html>
